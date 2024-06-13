@@ -4,14 +4,19 @@
 
 body {
   font-family: 'epilogue', sans-serif;
-  height: 100dvh;
+  height: 100%;
+  overflow-x: hidden;
 }
 
 [class*='__container'] {
-  max-width: 373px;
-  padding-right: 15px;
-  padding-left: 15px;
+  max-width: 343px;
   margin: 0 auto;
+  @include tablet_display {
+    max-width: 700px;
+  }
+  @include pc_display {
+    max-width: 1470px;
+  }
 }
 
 // header------------
@@ -95,13 +100,28 @@ body {
   grid-template-columns: 1fr;
   grid-auto-rows: max-content;
   grid-row-gap: 47px;
+  @include tablet_display {
+    margin-top: 30px;
+  }
+  @include pc_display {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    margin-top: 51px;
+    grid-auto-rows: unset;
+    justify-content: center;
+  }
   & img {
     max-inline-size: 100%;
     max-block-size: 100%;
   }
   &__image {
-    @include tablet_display {
+    @include pc_display {
+      grid-column: 2/3;
+      grid-row: 1/2;
       content: url('../img/image-hero-desktop.png');
+      max-width: 85%;
+      padding-right: 0;
+      justify-self: end;
     }
   }
 }
@@ -112,10 +132,23 @@ body {
   align-items: center;
   justify-content: center;
   gap: 16px;
+  @include pc_display {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    justify-content: center;
+    align-items: start;
+  }
   &__header {
     font-size: 36px;
     font-weight: 700;
     text-align: center;
+    @include tablet_display {
+      font-size: 40px;
+    }
+    @include pc_display {
+      font-size: 80px;
+      text-align: left;
+    }
   }
   &__text {
     color: #686868;
@@ -123,10 +156,18 @@ body {
     font-size: 16px;
     line-height: 1.63;
     text-align: center;
+    @include tablet_display {
+      font-size: 18px;
+      @include pc_display {
+        max-width: 445px;
+        text-align: left;
+      }
+    }
   }
   &__btn {
     text-decoration: none;
     background-color: #151515;
+    border: solid 1px #151515;
     color: white;
     border-radius: 15px;
     display: flex;
@@ -135,19 +176,37 @@ body {
     min-height: 48px;
     min-width: 136px;
     font-weight: 500;
+    transition: all 0.4s;
+    &:focus-visible {
+      background-color: transparent;
+      color: #151515;
+    }
+    @include hover {
+      &:hover {
+        background-color: transparent;
+        color: #151515;
+      }
+    }
   }
 }
 
 .partners {
-  margin-top: 48px;
+  margin-top: 32px;
+  @include tablet_display {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    margin-top: 100px;
+  }
   &__list {
     display: flex;
     justify-content: space-between;
   }
   &__item {
-    width: auto;
-    max-inline-size: 100%;
-    max-block-size: 100%;
+    &:not(:last-child) {
+      @include tablet_display {
+        margin-right: 40px;
+      }
+    }
   }
   &__link {
     & img {

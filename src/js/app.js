@@ -17,6 +17,6 @@ if (navigationMenuOpenBtn) {
 
 if (navigationMenuCloseBtn) {
   navigationMenuCloseBtn.addEventListener('click', () => {
-    navigationMenu.classList.remove('navigation--active');
+    navigationMenu && navigationMenu.classList.remove('navigation--active');
   });
 }
