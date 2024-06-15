@@ -25,12 +25,12 @@ if (navigationMenuCloseBtn) {
 
 if (subMenuGroup1.length > 0) {
   subMenuGroup1[0].addEventListener('click', () => {
-    subMenuGroup1[1].classList.toggle('submenu--active');
+    subMenuGroup1[1].classList.toggle('navigation__submenu--active');
   });
 }
 
 if (subMenuGroup2.length > 0) {
   subMenuGroup2[0].addEventListener('click', () => {
-    subMenuGroup2[1].classList.toggle('submenu--active');
+    subMenuGroup2[1].classList.toggle('navigation__submenu--active');
   });
 }

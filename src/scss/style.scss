@@ -72,20 +72,6 @@ body {
     width: 100%;
     padding-left: 60px;
   }
-  & a {
-    color: #686868;
-    font-weight: 500;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    @include pc_display {
-      align-self: center;
-    }
-    &:active {
-      outline: none;
-      border: none;
-    }
-  }
   &__closeIcon {
     align-self: end;
     cursor: pointer;
@@ -100,22 +86,33 @@ body {
     align-self: start;
     width: fit-content;
     transition: color 0.4s;
+    color: #686868;
+    font-weight: 500;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    @include pc_display {
+      align-self: center;
+    }
+    &:active {
+      outline: none;
+      border: none;
+    }
     @include hover {
       &:hover {
         color: #151515;
       }
     }
-    & svg {
+    &__arrowUp {
       margin-left: 17px;
-    }
-    .submenu--active & svg {
-      rotate: 180deg;
+      transition: rotate 0.4s;
     }
   }
   &__login {
     text-decoration: none;
     margin-top: 16px;
     transition: color 0.4s;
+    color: #686868;
     @include hover {
       &:hover {
         color: #151515;
@@ -135,54 +132,85 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #686868;
+    @include tablet_display {
+      width: 60%;
+    }
     @include pc_display {
       width: unset;
       min-width: 104px;
     }
   }
+  &__submenu {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 22px;
+    display: none;
+    opacity: 0;
+    transition:
+      opacity 0.4s,
+      display 0.4s;
+    @supports (transition-behavior: allow-discrete) {
+      transition-behavior: allow-discrete;
+    }
+
+    @include pc_display {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: auto;
+      border-radius: 10px;
+      box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.15);
+      background-color: #fff;
+      padding: 24px;
+    }
+    &--active {
+      opacity: 1;
+      display: flex;
+    }
+    &__item {
+      margin-left: 24px;
+      text-decoration: none;
+      color: #686868;
+      font-size: 16px;
+      font-weight: 500;
+      transition: color 0.4s;
+      @include pc_display {
+        margin-left: 0;
+        align-self: baseline;
+      }
+      @include hover {
+        &:hover {
+          color: #151515;
+        }
+      }
+      & img {
+        height: 16px;
+        width: auto;
+      }
+    }
+  }
 }
 
-.submenu {
-  width: 100%;
-  height: auto;
-  flex-direction: column;
-  justify-content: center;
-  align-items: start;
-  gap: 22px;
-  display: none;
-  opacity: 0;
-  transition:
-    opacity 0.4s,
-    display 0.4s allow-discrete;
-  &--active {
-    opacity: 1;
-    display: flex;
+div[data-submenu='1'] {
+  @include pc_display {
+    min-width: 153px;
+    min-height: 160px;
+    left: -40px;
   }
+}
+
+div[data-submenu='2'] {
   @include pc_display {
     position: absolute;
     top: 100%;
-    left: 0;
+    left: 195px;
     width: auto;
   }
-  &__item {
-    margin-left: 24px;
-    text-decoration: none;
-    color: #686868;
-    font-size: 16px;
-    font-weight: 500;
-    transition: color 0.4s;
-    @include hover {
-      &:hover {
-        color: #151515;
-      }
-    }
-    & img {
-      height: 16px;
-      width: auto;
-    }
-  }
 }
-
 // main page
 
 .page_main {
