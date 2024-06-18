@@ -10,7 +10,8 @@
     "build": "gulp build --build",
     "spriteIcons": "gulp createSvgSprite",
     "deployZip": "gulp deployZip --build",
-    "deployFtp": "gulp deployFtp --build"
+    "deployFtp": "gulp deployFtp --build",
+    "deployPages": "gh-pages -d dist"
   },
   "author": "DMT",
   "license": "ISC",
@@ -21,6 +22,7 @@
     "browser-sync": "^3.0.2",
     "css-loader": "^6.10.0",
     "del": "^7.1.0",
+    "gh-pages": "^6.1.1",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^9.0.0",
     "gulp-clean-css": "^4.3.0",
